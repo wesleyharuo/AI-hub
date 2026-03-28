@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Intelligence Hub — 2026 Ultimate Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060810;
+    --bg2: #0c0f1a;
+    --bg3: #111525;
+    --border: rgba(255,255,255,0.07);
+    --border-hi: rgba(255,255,255,0.14);
+    --text: #e8eaf0;
+    --text2: #8892a4;
+    --text3: #4a5568;
+    --accent: #4f8eff;
+    --accent2: #7c3aed;
+    --accent3: #06d6a0;
+    --accent4: #f59e0b;
+    --accent5: #ef4444;
+    --accent6: #ec4899;
+    --glow: rgba(79,142,255,0.15);
+    --card-bg: rgba(255,255,255,0.03);
+    --card-bg-hi: rgba(255,255,255,0.06);
+    --radius: 16px;
+    --radius-sm: 8px;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --font-serif: 'Instrument Serif', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-display);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 20% 10%, rgba(79,142,255,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 60% 40%, rgba(6,214,160,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  .wrapper { position: relative; z-index: 1; max-width: 1600px; margin: 0 auto; padding: 0 28px 80px; }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 40px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-mark {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    font-size: 15px; font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text2);
+    font-family: var(--font-mono);
+    margin-top: 1px;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .live-badge {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; font-family: var(--font-mono);
+    color: var(--accent3);
+    background: rgba(6,214,160,0.08);
+    border: 1px solid rgba(6,214,160,0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .live-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .date-badge {
+    font-size: 11px; font-family: var(--font-mono);
+    color: var(--text2);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* ─── HERO TITLE ─── */
+  .hero {
+    padding: 20px 0 50px;
+    position: relative;
+  }
+
+  .hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-kicker::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--accent);
+    display: block;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 6vw, 82px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title .line1 { color: var(--text); display: block; }
+  .hero-title .line2 {
+    display: block;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent6) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-title .line3 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text2);
+    font-size: 0.65em;
+    letter-spacing: -1px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 400;
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s, background .2s;
+    cursor: default;
+  }
+
+  .stat-card:hover {
+    border-color: var(--border-hi);
+    background: var(--card-bg-hi);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .stat-card.blue::before { background: linear-gradient(90deg, var(--accent), transparent); }
+  .stat-card.purple::before { background: linear-gradient(90deg, var(--accent2), transparent); }
+  .stat-card.green::before { background: linear-gradient(90deg, var(--accent3), transparent); }
+  .stat-card.amber::before { background: linear-gradient(90deg, var(--accent4), transparent); }
+  .stat-card.pink::before { background: linear-gradient(90deg, var(--accent6), transparent); }
+
+  .stat-num {
+    font-size: 32px; font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-card.blue .stat-num { color: var(--accent); }
+  .stat-card.purple .stat-num { color: var(--accent2); }
+  .stat-card.green .stat-num { color: var(--accent3); }
+  .stat-card.amber .stat-num { color: var(--accent4); }
+  .stat-card.pink .stat-num { color: var(--accent6); }
+
+  .stat-label { font-size: 11px; color: var(--text2); font-family: var(--font-mono); }
+
+  /* ─── FILTERS ─── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text2);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px; height: 14px;
+    background: var(--accent);
+    border-radius: 2px;
+    display: block;
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .filter-btn {
+    font-size: 11px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text2);
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--border-hi);
+    color: var(--text);
+    background: var(--card-bg-hi);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ─── COUNT LABEL ─── */
+  .count-label {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text3);
+    margin-bottom: 20px;
+  }
+
+  /* ─── GRID ─── */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  /* ─── AI CARD ─── */
+  .ai-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    cursor: default;
+    animation: fadeUp .5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ai-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-hi);
+    background: var(--card-bg-hi);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--border-hi);
+  }
+
+  .ai-card.featured {
+    border-color: rgba(79,142,255,0.3);
+    background: rgba(79,142,255,0.04);
+  }
+
+  .ai-card.featured:hover {
+    border-color: rgba(79,142,255,0.5);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(79,142,255,0.08);
+  }
+
+  /* Top accent line per category */
+  .ai-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    opacity: 0;
+    transition: opacity .25s;
+  }
+
+  .ai-card:hover::before { opacity: 1; }
+  .ai-card.cat-reasoning::before { background: linear-gradient(90deg, var(--accent), transparent); }
+  .ai-card.cat-code::before { background: linear-gradient(90deg, var(--accent3), transparent); }
+  .ai-card.cat-video::before { background: linear-gradient(90deg, var(--accent5), transparent); }
+  .ai-card.cat-image::before { background: linear-gradient(90deg, var(--accent4), transparent); }
+  .ai-card.cat-automation::before { background: linear-gradient(90deg, var(--accent6), transparent); }
+  .ai-card.cat-audio::before { background: linear-gradient(90deg, #a78bfa, transparent); }
+
+  /* ─── CARD HEADER ─── */
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .card-title-block { flex: 1; min-width: 0; }
+
+  .card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  .card-maker {
+    font-size: 10px;
+    color: var(--text3);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rank-pill {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text3);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .rank-pill.top { border-color: rgba(245,158,11,0.4); color: var(--accent4); background: rgba(245,158,11,0.08); }
+
+  /* ─── TAGS ─── */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid;
+  }
+
+  .tag-blue   { color: #60a5fa; border-color: rgba(96,165,250,0.25); background: rgba(96,165,250,0.08); }
+  .tag-green  { color: #34d399; border-color: rgba(52,211,153,0.25); background: rgba(52,211,153,0.08); }
+  .tag-amber  { color: #fbbf24; border-color: rgba(251,191,36,0.25); background: rgba(251,191,36,0.08); }
+  .tag-red    { color: #f87171; border-color: rgba(248,113,113,0.25); background: rgba(248,113,113,0.08); }
+  .tag-purple { color: #a78bfa; border-color: rgba(167,139,250,0.25); background: rgba(167,139,250,0.08); }
+  .tag-gray   { color: var(--text3); border-color: var(--border); background: var(--card-bg); }
+  .tag-pink   { color: #f472b6; border-color: rgba(244,114,182,0.25); background: rgba(244,114,182,0.08); }
+  .tag-teal   { color: #2dd4bf; border-color: rgba(45,212,191,0.25); background: rgba(45,212,191,0.08); }
+
+  /* ─── BARS ─── */
+  .bars { display: flex; flex-direction: column; gap: 8px; }
+
+  .bar-row { display: flex; flex-direction: column; gap: 4px; }
+
+  .bar-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text2);
+    font-family: var(--font-mono);
+  }
+
+  .bar-meta .bar-pct {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bar-fill.animated { transform: scaleX(1); }
+
+  /* ─── DIVIDER ─── */
+  .card-divider {
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── BEST AT ─── */
+  .best-label {
+    font-size: 9px;
+    font-family: var(--font-mono);
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 5px;
+  }
+
+  .best-text {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  .best-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── LINK BUTTON ─── */
+  .card-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    transition: all .2s;
+    margin-top: auto;
+  }
+
+  .card-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(79,142,255,0.06);
+  }
+
+  .card-link .link-arrow {
+    font-size: 13px;
+    transition: transform .2s;
+  }
+
+  .card-link:hover .link-arrow { transform: translateX(3px) translateY(-2px); }
+
+  /* ─── CHART SECTION ─── */
+  .chart-section {
+    margin: 60px 0 40px;
+  }
+
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .chart-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text2);
+    font-family: var(--font-mono);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .chart-title::before {
+    content: '';
+    width: 4px; height: 12px;
+    border-radius: 2px;
+    display: block;
+  }
+
+  .chart-card:first-child .chart-title::before { background: var(--accent); }
+  .chart-card:last-child .chart-title::before { background: var(--accent3); }
+
+  /* Radar chart */
+  .radar-wrap { display: flex; align-items: center; justify-content: center; }
+
+  /* Category legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; font-family: var(--font-mono); color: var(--text2); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+  /* ─── CATEGORY MAP ─── */
+  .cat-map {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .cat-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all .2s;
+    text-align: center;
+  }
+
+  .cat-item:hover {
+    border-color: var(--border-hi);
+    background: var(--card-bg-hi);
+    transform: translateY(-2px);
+  }
+
+  .cat-item.active-cat {
+    border-color: rgba(79,142,255,0.4);
+    background: rgba(79,142,255,0.06);
+  }
+
+  .cat-emoji { font-size: 22px; margin-bottom: 6px; }
+  .cat-name { font-size: 11px; font-weight: 600; font-family: var(--font-mono); color: var(--text2); margin-bottom: 2px; }
+  .cat-count { font-size: 10px; color: var(--text3); font-family: var(--font-mono); }
+
+  /* ─── COMPARISON TABLE ─── */
+  .table-section { margin: 40px 0; }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: var(--font-mono);
+  }
+
+  .compare-table thead th {
+    text-align: left;
+    padding: 10px 14px;
+    color: var(--text3);
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    transition: background .15s;
+    cursor: default;
+  }
+
+  .compare-table tbody tr:hover { background: var(--card-bg); }
+
+  .compare-table td {
+    padding: 10px 14px;
+    color: var(--text2);
+    vertical-align: middle;
+  }
+
+  .compare-table td:first-child { color: var(--text); font-weight: 600; }
+
+  .check { color: var(--accent3); font-size: 13px; }
+  .dash-sym { color: var(--text3); }
+  .partial { color: var(--accent4); font-size: 11px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text3);
+    line-height: 1.8;
+  }
+
+  .footer-links { display: flex; gap: 20px; }
+  .footer-link {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text3);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-link:hover { color: var(--accent); }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .stats-row { grid-template-columns: repeat(3, 1fr); }
+    .chart-grid { grid-template-columns: 1fr; }
+    .cat-map { grid-template-columns: repeat(3, 1fr); }
+    .ai-grid { grid-template-columns: 1fr; }
+    .compare-table { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .cat-map { grid-template-columns: repeat(2, 1fr); }
+    .hero-title { letter-spacing: -2px; }
+    .header-top { flex-wrap: wrap; }
+  }
+
+  /* ─── TOOLTIP ─── */
+  [data-tip] { position: relative; }
+  [data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg3);
+    border: 1px solid var(--border-hi);
+    color: var(--text);
+    font-size: 11px;
+    font-family: var(--font-mono);
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s;
+    z-index: 100;
+  }
+  [data-tip]:hover::after { opacity: 1; }
+
+  /* ─── SEARCH ─── */
+  .search-wrap {
+    position: relative;
+    width: 220px;
+  }
+
+  .search-input {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px 8px 34px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  .search-input::placeholder { color: var(--text3); }
+  .search-input:focus { border-color: var(--accent); }
+
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-size: 13px;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-mark">AI</div>
+        <div>
+          <div class="logo-text">Intelligence Hub</div>
+          <div class="logo-sub">v3.0 · 2026 edition</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          Live data · 2026
+        </div>
+        <div class="date-badge" id="live-date">March 2026</div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-kicker">The definitive AI market intelligence report</div>
+      <h1 class="hero-title">
+        <span class="line1">Top 20 AI</span>
+        <span class="line2">Platforms Ranked</span>
+        <span class="line3">— every capability, every category</span>
+      </h1>
+      <p class="hero-desc">
+        The most comprehensive comparison of frontier AI systems across reasoning, code, video, image generation, automation, scheduling, audio, and more — updated for 2026.
+      </p>
+    </div>
+  </header>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat-card blue">
+      <div class="stat-num">20</div>
+      <div class="stat-label">Platforms analyzed</div>
+    </div>
+    <div class="stat-card purple">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Capability categories</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-num">100</div>
+      <div class="stat-label">Metrics evaluated</div>
+    </div>
+    <div class="stat-card amber">
+      <div class="stat-num">$2T+</div>
+      <div class="stat-label">Combined AI market cap</div>
+    </div>
+    <div class="stat-card pink">
+      <div class="stat-num">Q1 '26</div>
+      <div class="stat-label">Last updated</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY MAP -->
+  <div class="section-header">
+    <div class="section-title">Browse by category</div>
+  </div>
+  <div class="cat-map" id="cat-map"></div>
+
+  <!-- CHART SECTION -->
+  <div class="chart-section">
+    <div class="chart-grid">
+      <!-- Radar -->
+      <div class="chart-card">
+        <div class="chart-title">Top 5 · capability radar</div>
+        <div class="radar-wrap">
+          <canvas id="radarChart" width="340" height="300"></canvas>
+        </div>
+      </div>
+      <!-- Bar -->
+      <div class="chart-card">
+        <div class="chart-title">Overall scores · all 20 platforms</div>
+        <div style="position:relative;height:320px;">
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="section-header">
+    <div class="section-title">All platforms</div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" type="text" id="search-input" placeholder="Search platforms...">
+      </div>
+    </div>
+  </div>
+  <div class="filter-bar" id="filter-bar"></div>
+  <div class="count-label" id="count-label">Showing all 20 platforms</div>
+  <div class="ai-grid" id="ai-grid"></div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="table-section">
+    <div class="section-header" style="margin-top:40px;">
+      <div class="section-title">Feature comparison matrix</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Reasoning</th>
+            <th>Code</th>
+            <th>Video gen</th>
+            <th>Image gen</th>
+            <th>Voice/Audio</th>
+            <th>Automation</th>
+            <th>Scheduling</th>
+            <th>Search</th>
+            <th>Open source</th>
+            <th>API access</th>
+          </tr>
+        </thead>
+        <tbody id="compare-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      AI Intelligence Hub · 2026 Edition<br>
+      Data compiled from public benchmarks, research papers, and product documentation.<br>
+      All scores are comparative estimates based on expert analysis.
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://claude.ai" target="_blank">Claude ↗</a>
+      <a class="footer-link" href="https://openai.com" target="_blank">OpenAI ↗</a>
+      <a class="footer-link" href="https://deepmind.google" target="_blank">DeepMind ↗</a>
+      <a class="footer-link" href="https://huggingface.co" target="_blank">HuggingFace ↗</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const CATEGORIES = [
+  { id:'all',        label:'All',          emoji:'◈', color:'#4f8eff' },
+  { id:'reasoning',  label:'Reasoning',    emoji:'◎', color:'#4f8eff' },
+  { id:'code',       label:'Code / Dev',   emoji:'⌗', color:'#06d6a0' },
+  { id:'video',      label:'Video gen',    emoji:'▶', color:'#ef4444' },
+  { id:'image',      label:'Image gen',    emoji:'◉', color:'#f59e0b' },
+  { id:'audio',      label:'Audio / Voice',emoji:'◈', color:'#a78bfa' },
+  { id:'automation', label:'Automation',   emoji:'⟳', color:'#ec4899' },
+  { id:'scheduling', label:'Scheduling',   emoji:'⊕', color:'#06d6a0' },
+  { id:'search',     label:'Search',       emoji:'⊘', color:'#4f8eff' },
+  { id:'multimodal', label:'Multimodal',   emoji:'◐', color:'#7c3aed' },
+  { id:'open',       label:'Open source',  emoji:'◻', color:'#f59e0b' },
+];
+
+const AIs = [
+  {
+    rank:1, name:'Claude Opus / Sonnet', maker:'Anthropic · claude.ai · Claude Code',
+    featured:true, mainCat:'reasoning',
+    icon:'CL', iconBg:'linear-gradient(135deg,#4f8eff,#7c3aed)',
+    url:'https://claude.ai',
+    urlLabel:'claude.ai ↗',
+    tags:[['Reasoning #1','tag-blue'],['200k ctx','tag-gray'],['Coding agent','tag-green'],['Safety','tag-blue'],['Agentic','tag-purple']],
+    cats:['reasoning','code','automation','multimodal'],
+    bars:[
+      ['Reasoning & analysis',98,'#4f8eff'],
+      ['Long context (200k tokens)',99,'#4f8eff'],
+      ['Code & agentic dev',96,'#06d6a0'],
+      ['Automation (Claude Code)',95,'#06d6a0'],
+      ['Writing & nuance',98,'#a78bfa'],
+    ],
+    best:'<strong>Deep reasoning, legal/medical docs, complex coding, multi-step agentic workflows.</strong> Claude Code automates full engineering tasks autonomously. Best context fidelity and instruction following.',
+    features:{reasoning:true,code:true,video:false,image:false,audio:'partial',automation:true,scheduling:'partial',search:'partial',open:false,api:true},
+    score:97,
+  },
+  {
+    rank:2, name:'GPT-4o / o3 / o4-mini', maker:'OpenAI · ChatGPT · API · Plugins',
+    featured:false, mainCat:'multimodal',
+    icon:'GP', iconBg:'linear-gradient(135deg,#10b981,#059669)',
+    url:'https://openai.com',
+    urlLabel:'openai.com ↗',
+    tags:[['Multimodal','tag-blue'],['STEM #1','tag-green'],['Voice','tag-amber'],['DALL·E','tag-red'],['Plugins','tag-gray']],
+    cats:['reasoning','code','multimodal','image','automation','scheduling'],
+    bars:[
+      ['Reasoning & STEM (o3/o4)',97,'#4f8eff'],
+      ['Multimodal (vision+audio)',98,'#06d6a0'],
+      ['Code generation',95,'#06d6a0'],
+      ['Image gen (DALL·E 3)',91,'#f59e0b'],
+      ['Plugin / tool ecosystem',99,'#06d6a0'],
+    ],
+    best:'<strong>Most versatile all-in-one platform.</strong> Real-time voice, vision, DALL·E images, scheduling via plugins. o3/o4 leads all math & competitive programming benchmarks globally.',
+    features:{reasoning:true,code:true,video:'partial',image:true,audio:true,automation:true,scheduling:true,search:true,open:false,api:true},
+    score:96,
+  },
+  {
+    rank:3, name:'Gemini 2.5 Ultra / Pro', maker:'Google DeepMind · Workspace · API',
+    featured:false, mainCat:'multimodal',
+    icon:'GM', iconBg:'linear-gradient(135deg,#4285f4,#34a853)',
+    url:'https://gemini.google.com',
+    urlLabel:'gemini.google.com ↗',
+    tags:[['1M ctx','tag-purple'],['Google native','tag-green'],['Video','tag-red'],['Scheduling','tag-teal'],['Calendar AI','tag-teal']],
+    cats:['reasoning','multimodal','video','code','scheduling','automation'],
+    bars:[
+      ['Context window (1M tokens)',99,'#7c3aed'],
+      ['Google Workspace integration',99,'#06d6a0'],
+      ['Video understanding',97,'#ef4444'],
+      ['Scheduling (Calendar/Meet)',96,'#06d6a0'],
+      ['Real-time web grounding',95,'#4f8eff'],
+    ],
+    best:'<strong>Best for Google ecosystem power users.</strong> 1M token context, integrates Calendar, Gmail, Meet, Sheets. Can schedule meetings, summarize email threads, and automate entire Workspace workflows.',
+    features:{reasoning:true,code:true,video:true,image:true,audio:true,automation:true,scheduling:true,search:true,open:false,api:true},
+    score:95,
+  },
+  {
+    rank:4, name:'Grok 3 / Aurora', maker:'xAI · X (Twitter) · API',
+    featured:false, mainCat:'reasoning',
+    icon:'GK', iconBg:'linear-gradient(135deg,#1da1f2,#0d47a1)',
+    url:'https://x.ai',
+    urlLabel:'x.ai ↗',
+    tags:[['Real-time X','tag-blue'],['STEM','tag-green'],['Aurora imgs','tag-red'],['No limits','tag-amber']],
+    cats:['reasoning','multimodal','image'],
+    bars:[
+      ['Real-time X/web data',99,'#06d6a0'],
+      ['Math & science (STEM)',96,'#06d6a0'],
+      ['Code generation',91,'#06d6a0'],
+      ['Image gen (Aurora)',89,'#f59e0b'],
+      ['Ecosystem maturity',72,'#888'],
+    ],
+    best:'<strong>Unique real-time X/Twitter data access.</strong> Top-tier STEM benchmarks. Aurora image generator built-in. Fewer content restrictions. Best for social intelligence and current-events research.',
+    features:{reasoning:true,code:true,video:false,image:true,audio:false,automation:false,scheduling:false,search:true,open:false,api:true},
+    score:88,
+  },
+  {
+    rank:5, name:'Llama 4 Scout / Maverick', maker:'Meta · Open weights · Hugging Face',
+    featured:false, mainCat:'open',
+    icon:'LL', iconBg:'linear-gradient(135deg,#1877f2,#42b72a)',
+    url:'https://huggingface.co/meta-llama',
+    urlLabel:'huggingface.co ↗',
+    tags:[['Open source #1','tag-green'],['10M ctx','tag-purple'],['Self-hosted','tag-gray'],['Fine-tunable','tag-amber']],
+    cats:['reasoning','code','open','multimodal'],
+    bars:[
+      ['Context (10M tokens Scout)',99,'#7c3aed'],
+      ['Customizability / fine-tuning',99,'#06d6a0'],
+      ['Privacy / on-premise',99,'#06d6a0'],
+      ['Multimodal (vision)',87,'#06d6a0'],
+      ['Raw reasoning quality',89,'#4f8eff'],
+    ],
+    best:'<strong>Only open-weight frontier model with 10M token context.</strong> Full data sovereignty, fine-tune on your own data, deploy on-premise. Narrows the gap with GPT-4 significantly in 2026.',
+    features:{reasoning:true,code:true,video:false,image:false,audio:false,automation:'partial',scheduling:false,search:false,open:true,api:true},
+    score:86,
+  },
+  {
+    rank:6, name:'Mistral Large 2 / Le Chat', maker:'Mistral AI · EU · API + open weights',
+    featured:false, mainCat:'open',
+    icon:'MS', iconBg:'linear-gradient(135deg,#ff6b35,#f7931e)',
+    url:'https://mistral.ai',
+    urlLabel:'mistral.ai ↗',
+    tags:[['GDPR native','tag-blue'],['EU compliant','tag-blue'],['Multilingual','tag-green'],['Open weights','tag-amber']],
+    cats:['reasoning','code','open'],
+    bars:[
+      ['EU/GDPR compliance',99,'#4f8eff'],
+      ['Multilingual quality',97,'#4f8eff'],
+      ['Code generation',89,'#06d6a0'],
+      ['API cost efficiency',96,'#06d6a0'],
+      ['Reasoning depth',87,'#4f8eff'],
+    ],
+    best:'<strong>European AI leader — GDPR-native by design.</strong> Strong French, German, Spanish. Both API and open weights. Ideal for finance, healthcare, legal in EU-regulated industries.',
+    features:{reasoning:true,code:true,video:false,image:false,audio:false,automation:false,scheduling:false,search:false,open:true,api:true},
+    score:84,
+  },
+  {
+    rank:7, name:'DeepSeek R2 / V3', maker:'DeepSeek · China · Open source · API',
+    featured:false, mainCat:'code',
+    icon:'DS', iconBg:'linear-gradient(135deg,#06b6d4,#0891b2)',
+    url:'https://deepseek.com',
+    urlLabel:'deepseek.com ↗',
+    tags:[['Math #1','tag-green'],['Code','tag-green'],['Open source','tag-amber'],['Ultra-cheap','tag-gray']],
+    cats:['reasoning','code','open'],
+    bars:[
+      ['Math & logic reasoning',96,'#06d6a0'],
+      ['Code generation',94,'#06d6a0'],
+      ['Cost efficiency (API)',99,'#06d6a0'],
+      ['Open weights (MIT)',97,'#f59e0b'],
+      ['English writing quality',83,'#888'],
+    ],
+    best:'<strong>Best price-to-performance in the world.</strong> Matches GPT-4 on math/coding at 10–20× lower API cost. MIT open source. The biggest disruption to frontier AI pricing in 2025–2026.',
+    features:{reasoning:true,code:true,video:false,image:false,audio:false,automation:false,scheduling:false,search:false,open:true,api:true},
+    score:87,
+  },
+  {
+    rank:8, name:'Cursor / GitHub Copilot', maker:'Anysphere / GitHub · IDE tools · VS Code',
+    featured:false, mainCat:'code',
+    icon:'CU', iconBg:'linear-gradient(135deg,#6366f1,#4f46e5)',
+    url:'https://cursor.com',
+    urlLabel:'cursor.com ↗',
+    tags:[['Coding #1','tag-green'],['IDE native','tag-blue'],['Codebase aware','tag-green'],['Multi-file','tag-amber']],
+    cats:['code','automation'],
+    bars:[
+      ['In-IDE completion & editing',99,'#06d6a0'],
+      ['Codebase indexing & context',98,'#06d6a0'],
+      ['Multi-file simultaneous edit',97,'#06d6a0'],
+      ['Bug detection & autofix',94,'#06d6a0'],
+      ['Non-code tasks',28,'#444'],
+    ],
+    best:'<strong>Best pure developer experience.</strong> Cursor indexes your entire repo, understands architecture, edits multiple files at once. Copilot integrates into VS Code, JetBrains, Neovim natively.',
+    features:{reasoning:'partial',code:true,video:false,image:false,audio:false,automation:true,scheduling:false,search:false,open:false,api:true},
+    score:85,
+  },
+  {
+    rank:9, name:'Perplexity AI Pro', maker:'Perplexity · perplexity.ai · API',
+    featured:false, mainCat:'search',
+    icon:'PX', iconBg:'linear-gradient(135deg,#20b2aa,#008b8b)',
+    url:'https://perplexity.ai',
+    urlLabel:'perplexity.ai ↗',
+    tags:[['Search AI #1','tag-blue'],['Cited sources','tag-gray'],['Real-time','tag-green'],['Research','tag-blue']],
+    cats:['search','reasoning','scheduling'],
+    bars:[
+      ['Real-time web research',99,'#4f8eff'],
+      ['Source citation quality',98,'#4f8eff'],
+      ['Answer accuracy',93,'#06d6a0'],
+      ['Response speed',97,'#06d6a0'],
+      ['Deep generation',65,'#888'],
+    ],
+    best:'<strong>Best AI search engine — every answer is cited.</strong> Ideal for research, market intelligence, and fact-checking. Handles scheduling research (flights, briefings, competitive analysis).',
+    features:{reasoning:true,code:false,video:false,image:false,audio:false,automation:false,scheduling:'partial',search:true,open:false,api:true},
+    score:82,
+  },
+  {
+    rank:10, name:'Sora v2 / Runway Gen-4', maker:'OpenAI / Runway · Text-to-video',
+    featured:false, mainCat:'video',
+    icon:'SR', iconBg:'linear-gradient(135deg,#ef4444,#991b1b)',
+    url:'https://sora.com',
+    urlLabel:'sora.com ↗',
+    tags:[['Video gen #1','tag-red'],['Cinematic','tag-amber'],['60s clips','tag-red'],['Pro editing','tag-gray']],
+    cats:['video','multimodal'],
+    bars:[
+      ['Video generation quality',98,'#ef4444'],
+      ['Physical coherence',96,'#ef4444'],
+      ['Cinematic style control',95,'#f59e0b'],
+      ['Clip length (up to 60s)',91,'#f59e0b'],
+      ['Generation speed',72,'#888'],
+    ],
+    best:'<strong>State-of-the-art text-to-video.</strong> Sora produces physically coherent cinematic clips. Runway Gen-4 adds professional timeline editing, motion brushes — the choice for film and ad production.',
+    features:{reasoning:false,code:false,video:true,image:'partial',audio:'partial',automation:false,scheduling:false,search:false,open:false,api:true},
+    score:83,
+  },
+  {
+    rank:11, name:'Midjourney v7 / FLUX 1.1 Pro', maker:'Midjourney / Black Forest Labs',
+    featured:false, mainCat:'image',
+    icon:'MJ', iconBg:'linear-gradient(135deg,#f59e0b,#d97706)',
+    url:'https://midjourney.com',
+    urlLabel:'midjourney.com ↗',
+    tags:[['Image gen #1','tag-red'],['Artistic','tag-amber'],['Photorealism','tag-red'],['Open weights','tag-green']],
+    cats:['image','multimodal'],
+    bars:[
+      ['Image aesthetic quality',99,'#f59e0b'],
+      ['Artistic style control',99,'#f59e0b'],
+      ['Photorealism (FLUX)',98,'#ef4444'],
+      ['Speed (FLUX Schnell)',96,'#06d6a0'],
+      ['API & open access (FLUX)',90,'#06d6a0'],
+    ],
+    best:'<strong>Best image generation duo.</strong> Midjourney v7 dominates artistic quality. FLUX 1.1 Pro (open weights) is the photorealism champion — best for production image pipelines and commercial use.',
+    features:{reasoning:false,code:false,video:false,image:true,audio:false,automation:false,scheduling:false,search:false,open:'partial',api:true},
+    score:81,
+  },
+  {
+    rank:12, name:'ElevenLabs / Suno / Udio', maker:'ElevenLabs / Suno / Udio · Audio AI',
+    featured:false, mainCat:'audio',
+    icon:'EL', iconBg:'linear-gradient(135deg,#a78bfa,#7c3aed)',
+    url:'https://elevenlabs.io',
+    urlLabel:'elevenlabs.io ↗',
+    tags:[['Voice clone #1','tag-purple'],['Music gen','tag-green'],['TTS 100+ langs','tag-blue'],['Emotion control','tag-amber']],
+    cats:['audio','multimodal'],
+    bars:[
+      ['Voice cloning quality',99,'#a78bfa'],
+      ['TTS naturalness (100+ langs)',98,'#a78bfa'],
+      ['Music generation (Suno/Udio)',95,'#06d6a0'],
+      ['Emotion & prosody control',93,'#f59e0b'],
+      ['API reliability & latency',91,'#4f8eff'],
+    ],
+    best:'<strong>Audio AI leaders.</strong> ElevenLabs is #1 for voice cloning and TTS in 100+ languages with emotion control. Suno/Udio generate full songs from prompts. Essential for podcasts, ads, and games.',
+    features:{reasoning:false,code:false,video:false,image:false,audio:true,automation:false,scheduling:false,search:false,open:false,api:true},
+    score:79,
+  },
+  {
+    rank:13, name:'Zapier AI / Make (Integromat)', maker:'Zapier / Make · No-code automation',
+    featured:false, mainCat:'automation',
+    icon:'ZP', iconBg:'linear-gradient(135deg,#ff4a1c,#ff6b35)',
+    url:'https://zapier.com',
+    urlLabel:'zapier.com ↗',
+    tags:[['Automation #1','tag-green'],['No-code','tag-blue'],['7000+ apps','tag-amber'],['AI workflows','tag-green']],
+    cats:['automation','scheduling'],
+    bars:[
+      ['App integrations (7000+)',99,'#ec4899'],
+      ['Workflow automation depth',98,'#ec4899'],
+      ['Scheduling & time triggers',97,'#06d6a0'],
+      ['No-code ease of use',96,'#06d6a0'],
+      ['AI-powered workflow builder',88,'#4f8eff'],
+    ],
+    best:'<strong>King of workflow automation.</strong> Connect any app, automate any repetitive task, schedule workflows from natural language. Zapier AI builds complete automations from plain English descriptions.',
+    features:{reasoning:false,code:false,video:false,image:false,audio:false,automation:true,scheduling:true,search:false,open:false,api:true},
+    score:80,
+  },
+  {
+    rank:14, name:'Notion AI / Coda AI', maker:'Notion / Coda · AI-native workspace',
+    featured:false, mainCat:'scheduling',
+    icon:'NO', iconBg:'linear-gradient(135deg,#374151,#1f2937)',
+    url:'https://notion.com',
+    urlLabel:'notion.com ↗',
+    tags:[['Project mgmt','tag-green'],['AI docs','tag-blue'],['Meeting AI','tag-teal'],['Team collab','tag-amber']],
+    cats:['scheduling','automation','reasoning'],
+    bars:[
+      ['Project & task management',97,'#06d6a0'],
+      ['AI doc & agenda generation',95,'#4f8eff'],
+      ['Meeting scheduling & notes',94,'#06d6a0'],
+      ['Database automation',92,'#06d6a0'],
+      ['Team collaboration AI',96,'#06d6a0'],
+    ],
+    best:'<strong>Best AI-native workspace for scheduling and project management.</strong> Notion AI drafts docs, builds databases, auto-generates meeting agendas, tracks deadlines, integrates calendars seamlessly.',
+    features:{reasoning:'partial',code:false,video:false,image:false,audio:false,automation:true,scheduling:true,search:false,open:false,api:true},
+    score:78,
+  },
+  {
+    rank:15, name:'Microsoft Copilot 365', maker:'Microsoft · Office · Teams · Azure',
+    featured:false, mainCat:'scheduling',
+    icon:'MC', iconBg:'linear-gradient(135deg,#0078d4,#106ebe)',
+    url:'https://copilot.microsoft.com',
+    urlLabel:'copilot.microsoft.com ↗',
+    tags:[['Office native','tag-blue'],['Enterprise','tag-blue'],['Teams AI','tag-amber'],['Email auto','tag-green']],
+    cats:['scheduling','automation','reasoning','code'],
+    bars:[
+      ['Microsoft 365 integration',99,'#4f8eff'],
+      ['Email & calendar automation',97,'#4f8eff'],
+      ['Teams meeting scheduling',96,'#06d6a0'],
+      ['Excel / PowerPoint AI',94,'#4f8eff'],
+      ['Code (via GitHub Copilot)',92,'#06d6a0'],
+    ],
+    best:'<strong>Best for Microsoft enterprise users.</strong> Lives inside Outlook, Teams, Word, Excel, PowerPoint. Schedules meetings, summarizes emails, writes reports, builds spreadsheets — all in context.',
+    features:{reasoning:true,code:true,video:false,image:'partial',audio:'partial',automation:true,scheduling:true,search:true,open:false,api:true},
+    score:82,
+  },
+  {
+    rank:16, name:'n8n AI / LangChain Agents', maker:'n8n / LangChain · Dev automation',
+    featured:false, mainCat:'automation',
+    icon:'N8', iconBg:'linear-gradient(135deg,#ea580c,#c2410c)',
+    url:'https://n8n.io',
+    urlLabel:'n8n.io ↗',
+    tags:[['Dev automation','tag-green'],['Agent workflows','tag-blue'],['Self-hosted','tag-amber'],['Open source','tag-green']],
+    cats:['automation','code','open'],
+    bars:[
+      ['AI agent workflow building',98,'#ec4899'],
+      ['Custom integrations',97,'#06d6a0'],
+      ['Self-hosted / privacy',99,'#06d6a0'],
+      ['LLM orchestration',96,'#4f8eff'],
+      ['Ease of use (non-dev)',50,'#888'],
+    ],
+    best:'<strong>Best developer automation platform.</strong> n8n builds visual AI agent pipelines. LangChain orchestrates multi-step LLM workflows. Self-hosted, open-source, and infinitely customizable.',
+    features:{reasoning:false,code:true,video:false,image:false,audio:false,automation:true,scheduling:'partial',search:false,open:true,api:true},
+    score:77,
+  },
+  {
+    rank:17, name:'Kling 2.0 / Pika 2.0 / Hailuo', maker:'Kuaishou / Pika / MiniMax · Video',
+    featured:false, mainCat:'video',
+    icon:'KL', iconBg:'linear-gradient(135deg,#dc2626,#7f1d1d)',
+    url:'https://klingai.com',
+    urlLabel:'klingai.com ↗',
+    tags:[['Fast video','tag-red'],['Character gen','tag-amber'],['Affordable','tag-green'],['Social media','tag-gray']],
+    cats:['video','image'],
+    bars:[
+      ['Text-to-video speed',98,'#ef4444'],
+      ['Character consistency',94,'#f59e0b'],
+      ['Affordability vs Sora',98,'#06d6a0'],
+      ['Style variety',91,'#f59e0b'],
+      ['Max video length',85,'#f59e0b'],
+    ],
+    best:'<strong>Fast, affordable video generation.</strong> Kling 2.0 and Hailuo excel at character-consistent clips. Pika specializes in stylized short video. Perfect for social media creators and marketing teams.',
+    features:{reasoning:false,code:false,video:true,image:'partial',audio:false,automation:false,scheduling:false,search:false,open:false,api:true},
+    score:75,
+  },
+  {
+    rank:18, name:'Claude Code / Devin / SWE-agent', maker:'Anthropic / Cognition / Princeton',
+    featured:false, mainCat:'code',
+    icon:'DV', iconBg:'linear-gradient(135deg,#059669,#047857)',
+    url:'https://claude.ai/code',
+    urlLabel:'claude.ai/code ↗',
+    tags:[['Autonomous coding','tag-green'],['Full-stack agent','tag-blue'],['PR generation','tag-amber'],['Bug patching','tag-green']],
+    cats:['code','automation'],
+    bars:[
+      ['Autonomous task completion',97,'#06d6a0'],
+      ['Full-stack code generation',96,'#06d6a0'],
+      ['Pull request creation',94,'#06d6a0'],
+      ['Bug detection & patching',93,'#06d6a0'],
+      ['Non-dev tasks',30,'#444'],
+    ],
+    best:'<strong>Autonomous software engineering agents.</strong> Plan, write, test, and open PRs autonomously. Devin completes entire engineering assignments from a single prompt. The future of software development.',
+    features:{reasoning:'partial',code:true,video:false,image:false,audio:false,automation:true,scheduling:false,search:false,open:'partial',api:true},
+    score:83,
+  },
+  {
+    rank:19, name:'Salesforce Einstein / HubSpot AI', maker:'Salesforce / HubSpot · CRM AI',
+    featured:false, mainCat:'automation',
+    icon:'SF', iconBg:'linear-gradient(135deg,#0ea5e9,#0284c7)',
+    url:'https://salesforce.com/einstein',
+    urlLabel:'salesforce.com ↗',
+    tags:[['CRM AI','tag-blue'],['Sales auto','tag-amber'],['Scheduling','tag-green'],['Lead scoring','tag-green']],
+    cats:['scheduling','automation'],
+    bars:[
+      ['CRM & sales automation',99,'#4f8eff'],
+      ['Meeting & follow-up scheduling',97,'#06d6a0'],
+      ['Email campaign generation',95,'#06d6a0'],
+      ['Lead scoring AI',93,'#f59e0b'],
+      ['Revenue forecasting',91,'#4f8eff'],
+    ],
+    best:'<strong>Best AI for sales, marketing, and CRM automation.</strong> Einstein schedules follow-ups, scores leads, writes email campaigns, forecasts revenue. HubSpot AI automates entire marketing funnels.',
+    features:{reasoning:false,code:false,video:false,image:false,audio:false,automation:true,scheduling:true,search:false,open:false,api:true},
+    score:76,
+  },
+  {
+    rank:20, name:'Gemini Live / ChatGPT Voice / Pi', maker:'Google / OpenAI / Inflection · Voice AI',
+    featured:false, mainCat:'audio',
+    icon:'GL', iconBg:'linear-gradient(135deg,#f472b6,#ec4899)',
+    url:'https://gemini.google.com',
+    urlLabel:'gemini.google.com ↗',
+    tags:[['Voice AI','tag-purple'],['Real-time conv','tag-amber'],['Device control','tag-blue'],['Emotional IQ','tag-pink']],
+    cats:['audio','scheduling','multimodal'],
+    bars:[
+      ['Real-time voice conversation',98,'#a78bfa'],
+      ['Emotional intelligence',94,'#a78bfa'],
+      ['Scheduling via voice',91,'#06d6a0'],
+      ['Multilingual voice',93,'#4f8eff'],
+      ['Device & app integration',88,'#4f8eff'],
+    ],
+    best:'<strong>Best real-time voice AI assistants.</strong> Gemini Live and ChatGPT Voice handle natural spoken conversation, schedule appointments, set reminders, and control device functions hands-free.',
+    features:{reasoning:'partial',code:false,video:false,image:false,audio:true,automation:'partial',scheduling:true,search:'partial',open:false,api:true},
+    score:74,
+  },
+];
+
+const FEATURE_KEYS = ['reasoning','code','video','image','audio','automation','scheduling','search','open','api'];
+const FEATURE_LABELS = {
+  reasoning:'Reasoning', code:'Code', video:'Video gen', image:'Image gen',
+  audio:'Voice/Audio', automation:'Automation', scheduling:'Scheduling',
+  search:'Search', open:'Open source', api:'API access'
+};
+
+// ─── CATEGORY MAP ───────────────────────────────────────────────────────────
+const catMap = document.getElementById('cat-map');
+CATEGORIES.forEach(cat => {
+  const count = cat.id === 'all' ? AIs.length : AIs.filter(a => a.cats.includes(cat.id)).length;
+  const div = document.createElement('div');
+  div.className = 'cat-item' + (cat.id === 'all' ? ' active-cat' : '');
+  div.innerHTML = `<div class="cat-emoji" style="color:${cat.color}">${cat.emoji}</div>
+    <div class="cat-name" style="color:${cat.color}">${cat.label}</div>
+    <div class="cat-count">${count} platform${count !== 1 ? 's' : ''}</div>`;
+  div.onclick = () => {
+    document.querySelectorAll('.cat-item').forEach(c => c.classList.remove('active-cat'));
+    div.classList.add('active-cat');
+    filterAIs(cat.id);
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('fb-' + cat.id)?.classList.add('active');
+  };
+  catMap.appendChild(div);
+});
+
+// ─── FILTER BAR ─────────────────────────────────────────────────────────────
+const filterBar = document.getElementById('filter-bar');
+CATEGORIES.forEach(cat => {
+  const count = cat.id === 'all' ? AIs.length : AIs.filter(a => a.cats.includes(cat.id)).length;
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (cat.id === 'all' ? ' active' : '');
+  btn.id = 'fb-' + cat.id;
+  btn.textContent = `${cat.label} (${count})`;
+  btn.onclick = () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterAIs(cat.id);
+    document.querySelectorAll('.cat-item').forEach((c, i) => {
+      c.classList.toggle('active-cat', CATEGORIES[i].id === cat.id);
+    });
+  };
+  filterBar.appendChild(btn);
+});
+
+// ─── RENDER GRID ─────────────────────────────────────────────────────────────
+let currentFilter = 'all';
+let currentSearch = '';
+
+function filterAIs(cat) {
+  currentFilter = cat;
+  renderGrid();
+}
+
+function renderGrid() {
+  const grid = document.getElementById('ai-grid');
+  let filtered = currentFilter === 'all' ? AIs : AIs.filter(a => a.cats.includes(currentFilter));
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    filtered = filtered.filter(a =>
+      a.name.toLowerCase().includes(q) ||
+      a.maker.toLowerCase().includes(q) ||
+      a.best.toLowerCase().includes(q)
+    );
+  }
+
+  document.getElementById('count-label').textContent =
+    currentFilter === 'all' && !currentSearch
+      ? 'Showing all 20 platforms'
+      : `Showing ${filtered.length} platform${filtered.length !== 1 ? 's' : ''}`;
+
+  grid.innerHTML = filtered.map((a, i) => `
+    <div class="ai-card ${a.featured ? 'featured' : ''} cat-${a.mainCat}"
+         style="animation-delay:${i * 0.04}s">
+      <div class="card-head">
+        <div class="card-icon" style="background:${a.iconBg};color:#fff">${a.icon}</div>
+        <div class="card-title-block">
+          <div class="card-name">${a.name}</div>
+          <div class="card-maker">${a.maker}</div>
+        </div>
+        <div class="rank-pill ${a.rank <= 3 ? 'top' : ''}">#${a.rank}</div>
+      </div>
+
+      <div class="tag-row">
+        ${a.tags.map(([l,c]) => `<span class="tag ${c}">${l}</span>`).join('')}
+      </div>
+
+      <div class="bars">
+        ${a.bars.map(([l,v,col]) => `
+          <div class="bar-row">
+            <div class="bar-meta">
+              <span>${l}</span>
+              <span class="bar-pct">${v}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:${v}%;background:${col}" data-val="${v}"></div>
+            </div>
+          </div>`).join('')}
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div>
+        <div class="best-label">Best at</div>
+        <div class="best-text">${a.best}</div>
+      </div>
+
+      <a class="card-link" href="${a.url}" target="_blank" rel="noopener">
+        <span>${a.urlLabel}</span>
+        <span class="link-arrow">↗</span>
+      </a>
+    </div>
+  `).join('');
+
+  // animate bars
+  setTimeout(() => {
+    grid.querySelectorAll('.bar-fill').forEach(el => el.classList.add('animated'));
+  }, 100);
+}
+
+// Search
+document.getElementById('search-input').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  renderGrid();
+});
+
+// ─── COMPARE TABLE ──────────────────────────────────────────────────────────
+const tbody = document.getElementById('compare-tbody');
+AIs.forEach(a => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${a.name}</td>` + FEATURE_KEYS.map(k => {
+    const v = a.features[k];
+    if (v === true) return `<td><span class="check">✓</span></td>`;
+    if (v === false) return `<td><span class="dash-sym">—</span></td>`;
+    return `<td><span class="partial">partial</span></td>`;
+  }).join('');
+  tbody.appendChild(tr);
+});
+
+// ─── CHARTS ─────────────────────────────────────────────────────────────────
+const isDark = true;
+const gridColor = 'rgba(255,255,255,0.06)';
+const textColor = '#8892a4';
+
+// Radar
+const radarCtx = document.getElementById('radarChart').getContext('2d');
+new Chart(radarCtx, {
+  type: 'radar',
+  data: {
+    labels: ['Reasoning', 'Code', 'Multimodal', 'Automation', 'Context', 'Safety'],
+    datasets: [
+      {
+        label: 'Claude', data: [98, 96, 88, 95, 99, 99],
+        borderColor: '#4f8eff', backgroundColor: 'rgba(79,142,255,0.1)',
+        pointBackgroundColor: '#4f8eff', borderWidth: 2, pointRadius: 3,
+      },
+      {
+        label: 'GPT-4o/o3', data: [97, 95, 98, 90, 88, 88],
+        borderColor: '#06d6a0', backgroundColor: 'rgba(6,214,160,0.08)',
+        pointBackgroundColor: '#06d6a0', borderWidth: 2, pointRadius: 3,
+      },
+      {
+        label: 'Gemini 2.5', data: [95, 92, 97, 92, 99, 85],
+        borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,0.08)',
+        pointBackgroundColor: '#a78bfa', borderWidth: 2, pointRadius: 3,
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: true, labels: { color: textColor, font: { size: 11, family: 'DM Mono' }, boxWidth: 10, padding: 12 } } },
+    scales: {
+      r: {
+        min: 60, max: 100,
+        grid: { color: gridColor },
+        angleLines: { color: gridColor },
+        pointLabels: { color: textColor, font: { size: 11, family: 'DM Mono' } },
+        ticks: { display: false },
+      }
+    }
+  }
+});
+
+// Bar chart — overall scores
+const barCtx = document.getElementById('barChart').getContext('2d');
+new Chart(barCtx, {
+  type: 'bar',
+  data: {
+    labels: AIs.map(a => a.name.split(' ')[0] + (a.name.includes('/') ? '…' : '')),
+    datasets: [{
+      data: AIs.map(a => a.score),
+      backgroundColor: AIs.map(a => {
+        const colors = {reasoning:'rgba(79,142,255,0.7)',code:'rgba(6,214,160,0.7)',video:'rgba(239,68,68,0.7)',image:'rgba(245,158,11,0.7)',audio:'rgba(167,139,250,0.7)',automation:'rgba(236,72,153,0.7)',scheduling:'rgba(6,214,160,0.7)',search:'rgba(79,142,255,0.7)',multimodal:'rgba(124,58,237,0.7)',open:'rgba(245,158,11,0.7)'};
+        return colors[a.mainCat] || 'rgba(79,142,255,0.7)';
+      }),
+      borderColor: 'transparent',
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0c0f1a',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        titleColor: '#e8eaf0',
+        bodyColor: '#8892a4',
+        titleFont: { family: 'DM Mono', size: 11 },
+        bodyFont: { family: 'DM Mono', size: 11 },
+        callbacks: {
+          title: (items) => AIs[items[0].dataIndex].name,
+          label: (item) => `Overall score: ${item.raw}/100`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: textColor, font: { size: 9, family: 'DM Mono' }, maxRotation: 45 },
+        border: { color: gridColor }
+      },
+      y: {
+        min: 60, max: 100,
+        grid: { color: gridColor },
+        ticks: { color: textColor, font: { size: 10, family: 'DM Mono' } },
+        border: { color: gridColor }
+      }
+    }
+  }
+});
+
+// ─── LIVE DATE ───────────────────────────────────────────────────────────────
+document.getElementById('live-date').textContent = new Date().toLocaleDateString('en-US', { month:'long', year:'numeric' });
+
+// ─── INITIAL RENDER ──────────────────────────────────────────────────────────
+renderGrid();
+</script>
+</body>
+</html>
